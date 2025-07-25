@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leo AI Agency - Smart Automation That Works</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        /* PASTE YOUR LINKS HERE */
+        :root {
+            --calendar-link: "https://calendly.com/standartdevelop/30min";
+            --profile-image: "https://i.imgur.com/TG9ARlN.jpeg";
+            
+            --primary: #d4af37;
+            --bg-dark: #1a1816;
+            --bg-darker: #0f0e0c;
+            --text-light: #f5f5f5;
+            --text-muted: #d4c4b0;
+            --accent-glow: rgba(212, 175, 55, 0.15);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        .section { min-height: 100vh; display: flex; align-items: center; position: relative; }
+        .container { max-width: 1400px; width: 100%; margin: 0 auto; padding: 0 40px; }
+        .grid { display: grid; gap: 80px; align-items: center; }
+        .grid-2 { grid-template-columns: 1fr 1fr; }
+        
+        /* HERO SECTION */
+        .hero { background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%); }
+        .hero-content h1 {
+            font-size: 4rem; font-weight: 700; line-height: 1.1; margin-bottom: 30px;
+            background: linear-gradient(45deg, var(--text-light), var(--primary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-content p { font-size: 1.3rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 50px; }
+        .cta-primary {
+            background: var(--primary); color: var(--bg-dark); padding: 20px 40px; border: none;
+            border-radius: 12px; font-weight: 600; font-size: 1.1rem; cursor: pointer;
+            transition: all 0.4s ease; text-decoration: none; display: inline-block;
+        }
+        .cta-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4); }
+        
+        .hero-visual {
+            background: var(--accent-glow); border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 24px; padding: 60px; text-align: center; position: relative; overflow: hidden;
+        }
+        .profile-img {
+            width: 180px; height: 180px; border-radius: 50%; object-fit: cover;
+            border: 4px solid var(--primary); margin-bottom: 30px;
+            background: url('https://via.placeholder.com/180x180/1a1816/d4af37?text=Your+Photo') center/cover;
+        }
+        .floating-elements { position: absolute; width: 100%; height: 100%; }
+        .float-1, .float-2, .float-3 {
+            position: absolute; background: var(--primary); border-radius: 50%; opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+        .float-1 { width: 20px; height: 20px; top: 20%; left: 15%; animation-delay: 0s; }
+        .float-2 { width: 15px; height: 15px; top: 70%; right: 20%; animation-delay: 2s; }
+        .float-3 { width: 25px; height: 25px; bottom: 30%; left: 25%; animation-delay: 4s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* PROBLEM SECTION */
+        .problem { background: linear-gradient(135deg, #2d1b1b 0%, var(--bg-darker) 100%); }
+        .problem h2 { font-size: 3.5rem; font-weight: 600; margin-bottom: 50px; color: #ff6b6b; }
+        .problems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .problem-card {
+            background: rgba(255, 107, 107, 0.1); border: 1px solid rgba(255, 107, 107, 0.3);
+            border-radius: 16px; padding: 40px 30px; text-align: center; position: relative;
+            transition: transform 0.3s ease;
+        }
+        .problem-card:hover { transform: translateY(-10px); }
+        .problem-icon { font-size: 3rem; margin-bottom: 20px; }
+        .problem-text { font-size: 1.2rem; color: var(--text-muted); line-height: 1.5; }
+        
+        /* SOLUTION SECTION */
+        .solution { background: linear-gradient(135deg, var(--bg-dark) 0%, #1b2d1b 100%); }
+        .solution h2 { font-size: 3.5rem; font-weight: 600; margin-bottom: 30px; color: #2ed573; }
+        .solution-subtitle { font-size: 1.5rem; color: var(--text-muted); margin-bottom: 60px; }
+        .tech-showcase { display: flex; justify-content: space-around; align-items: center; }
+        .tech-item {
+            background: rgba(46, 213, 115, 0.1); border: 2px solid rgba(46, 213, 115, 0.3);
+            border-radius: 20px; padding: 50px 30px; text-align: center; min-width: 200px;
+            transition: all 0.4s ease; position: relative; overflow: hidden;
+        }
+        .tech-item:hover { transform: scale(1.05); box-shadow: 0 20px 40px rgba(46, 213, 115, 0.2); }
+        .tech-item::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(46, 213, 115, 0.1), transparent);
+            transform: rotate(45deg); transition: all 0.6s; opacity: 0;
+        }
+        .tech-item:hover::before { opacity: 1; animation: shine 1.5s ease-in-out; }
+        .tech-icon { font-size: 4rem; margin-bottom: 20px; color: #2ed573; }
+        .tech-name { font-size: 1.4rem; font-weight: 600; margin-bottom: 10px; }
+        
+        @keyframes shine { 0% { transform: translateX(-100%) rotate(45deg); } 100% { transform: translateX(100%) rotate(45deg); } }
+        
+        /* SERVICES SECTION */
+        .services { background: linear-gradient(135deg, var(--bg-darker) 0%, #2d2a1b 100%); }
+        .services h2 { font-size: 3.5rem; font-weight: 600; margin-bottom: 60px; text-align: center; }
+        .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+        .service-card {
+            background: var(--accent-glow); border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 24px; padding: 50px 40px; position: relative; overflow: hidden;
+        }
+        .service-card::after {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+        }
+        .service-title { font-size: 2rem; font-weight: 600; margin-bottom: 20px; color: var(--primary); }
+        .service-list { list-style: none; }
+        .service-list li {
+            padding: 15px 0; font-size: 1.1rem; color: var(--text-muted);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            position: relative; padding-left: 30px;
+        }
+        .service-list li::before {
+            content: '→'; position: absolute; left: 0; color: var(--primary);
+            font-weight: 600; transition: transform 0.3s ease;
+        }
+        .service-list li:hover::before { transform: translateX(5px); }
+        
+        /* PROOF SECTION */
+        .proof { background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%); }
+        .proof h2 { font-size: 3.5rem; font-weight: 600; margin-bottom: 60px; text-align: center; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        .stat-card {
+            background: var(--accent-glow); border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px; padding: 40px 30px; text-align: center; position: relative;
+        }
+        .stat-number {
+            font-size: 3.5rem; font-weight: 700; color: var(--primary); margin-bottom: 15px;
+            animation: countup 2s ease-out;
+        }
+        .stat-label { font-size: 1.1rem; color: var(--text-muted); line-height: 1.4; }
+        
+        @keyframes countup { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* WHY NOW SECTION */
+        .why-now { background: linear-gradient(135deg, #2d1b2d 0%, var(--bg-darker) 100%); }
+        .why-now h2 { font-size: 3.5rem; font-weight: 600; margin-bottom: 40px; color: #9c27b0; }
+        .urgency-visual {
+            background: rgba(156, 39, 176, 0.1); border: 1px solid rgba(156, 39, 176, 0.3);
+            border-radius: 24px; padding: 60px; text-align: center; position: relative;
+        }
+        .competition-meter {
+            width: 300px; height: 20px; background: rgba(156, 39, 176, 0.2);
+            border-radius: 10px; margin: 30px auto; position: relative; overflow: hidden;
+        }
+        .meter-fill {
+            height: 100%; background: linear-gradient(90deg, #9c27b0, #e91e63);
+            border-radius: 10px; width: 0%; animation: fillmeter 3s ease-out forwards;
+        }
+        .urgency-text { font-size: 1.3rem; color: var(--text-muted); margin-top: 30px; }
+        
+        @keyframes fillmeter { to { width: 85%; } }
+        
+        /* PROCESS SECTION */
+        .process { background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 100%); }
+        .process h2 { font-size: 3.5rem; font-weight: 600; margin-bottom: 60px; text-align: center; }
+        .process-flow { display: flex; justify-content: space-between; align-items: center; }
+        .process-step {
+            background: var(--accent-glow); border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px; padding: 40px 30px; text-align: center; flex: 1; margin: 0 10px;
+            position: relative; transition: transform 0.3s ease;
+        }
+        .process-step:hover { transform: translateY(-10px); }
+        .step-number {
+            width: 60px; height: 60px; background: var(--primary); color: var(--bg-dark);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; font-weight: 700; margin: 0 auto 20px;
+        }
+        .step-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 15px; }
+        .step-desc { font-size: 1rem; color: var(--text-muted); line-height: 1.4; }
+        .process-arrow {
+            font-size: 2rem; color: var(--primary); margin: 0 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+        
+        /* FINAL CTA SECTION */
+        .final-cta { 
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+            text-align: center; 
+        }
+        .final-cta h2 { font-size: 4rem; font-weight: 700; margin-bottom: 30px; }
+        .final-cta p { font-size: 1.4rem; color: var(--text-muted); margin-bottom: 50px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .cta-enhanced {
+            background: linear-gradient(45deg, var(--primary), #e6c757);
+            color: var(--bg-dark); padding: 25px 50px; border: none; border-radius: 15px;
+            font-weight: 700; font-size: 1.3rem; cursor: pointer; text-decoration: none;
+            display: inline-block; transition: all 0.4s ease; position: relative; overflow: hidden;
+        }
+        .cta-enhanced::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        .cta-enhanced:hover::before { left: 100%; }
+        .cta-enhanced:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(212, 175, 55, 0.4); }
+        
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; text-align: center; }
+            .hero-content h1, .problem h2, .solution h2, .services h2, .proof h2, .why-now h2, .process h2, .final-cta h2 { font-size: 2.5rem; }
+            .container { padding: 0 20px; }
+            .process-flow { flex-direction: column; }
+            .process-arrow { transform: rotate(90deg); margin: 20px 0; }
+            .tech-showcase { flex-direction: column; gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO SECTION -->
+    <section class="section hero">
+        <div class="container">
+            <div class="grid grid-2">
+                <div class="hero-content">
+                    <h1>Scale Your Business with Smart AI Automation</h1>
+                    <p>I help small teams and solopreneurs build AI systems that actually solve real business problems - from lead generation to sales conversion</p>
+                    <a href="#" class="cta-primary" onclick="window.open('YOUR_CALENDLY_LINK_HERE')">Book 30-Min Discovery Call</a>
+                </div>
+                <div class="hero-visual">
+                    <div class="floating-elements">
+                        <div class="float-1"></div>
+                        <div class="float-2"></div>
+                        <div class="float-3"></div>
+                    </div>
+                    <div class="profile-img"></div>
+                    <div style="color: var(--text-muted); font-size: 1.1rem;">3+ Years Building Systems That Work</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM SECTION -->
+    <section class="section problem">
+        <div class="container">
+            <h2>You're Smart Enough to Know Most "AI Solutions" Are Just Hype</h2>
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">🤯</div>
+                    <div class="problem-text">Everyone makes website building way too complicated</div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">💸</div>
+                    <div class="problem-text">Expensive tools and hosting that you don't need</div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">⏰</div>
+                    <div class="problem-text">Hours of setup, configuration, and troubleshooting</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUTION SECTION -->
+    <section class="section solution">
+        <div class="container">
+            <h2>Real Business Automation for Real Business Problems</h2>
+            <p class="solution-subtitle">I understand your challenges because I run my own projects</p>
+            <div class="tech-showcase">
+                <div class="tech-item">
+                    <div class="tech-icon">🤖</div>
+                    <div class="tech-name">AI That Works</div>
+                    <div>Focus on ROI, not tech buzzwords</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🎯</div>
+                    <div class="tech-name">Built for Small Teams</div>
+                    <div>Systems that just work when you're not there</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="section services">
+        <div class="container">
+            <h2>Two Core Areas That Actually Move the Needle</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3 class="service-title">Lead Generation Automation</h3>
+                    <ul class="service-list">
+                        <li>Outreach sequences that feel personal</li>
+                        <li>Lead scraping and qualification systems</li>
+                        <li>Quality leads on autopilot</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3 class="service-title">Sales Conversion Systems</h3>
+                    <ul class="service-list">
+                        <li>Automated proposal generation</li>
+                        <li>CRM workflows that increase close rates</li>
+                        <li>Conversion optimization at every funnel stage</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROOF SECTION -->
+    <section class="section proof">
+        <div class="container">
+            <h2>Systems That Generate Real Numbers</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">$75K+</div>
+                    <div class="stat-label">Generated by CRM system I built in months</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1,500+</div>
+                    <div class="stat-label">Qualified leads generated monthly by chatbots</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2-3x</div>
+                    <div class="stat-label">Team efficiency increase without hiring</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY NOW SECTION -->
+    <section class="section why-now">
+        <div class="container">
+            <div class="grid grid-2">
+                <div>
+                    <h2>Your Competition Is Already Using AI</h2>
+                    <p style="font-size: 1.3rem; color: var(--text-muted); line-height: 1.6;">
+                        Automation isn't optional anymore - it's survival. Smart systems beat expensive teams, especially when starting. Even with a team, AI makes them 2-3x more effective.
+                    </p>
+                </div>
+                <div class="urgency-visual">
+                    <div style="font-size: 1.2rem; margin-bottom: 20px;">Businesses Using AI Automation</div>
+                    <div class="competition-meter">
+                        <div class="meter-fill"></div>
+                    </div>
+                    <div class="urgency-text">Don't get left behind</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS SECTION -->
+    <section class="section process">
+        <div class="container">
+            <h2>Simple Process, Powerful Results</h2>
+            <div class="process-flow">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Discovery Call</div>
+                    <div class="step-desc">30-minute call to understand your bottlenecks</div>
+                </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Custom Design</div>
+                    <div class="step-desc">Built for your business, not a template</div>
+                </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Implementation</div>
+                    <div class="step-desc">We make sure it works before you depend on it</div>
+                </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Optimization</div>
+                    <div class="step-desc">Fine-tune based on real performance data</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA SECTION -->
+    <section class="section final-cta">
+        <div class="container">
+            <h2>Ready to Build Systems That Actually Work?</h2>
+            <p>Book a 30-minute discovery call. We'll identify your biggest automation opportunity. No pushy sales - just an honest conversation about what's possible.</p>
+            <a href="#" class="cta-enhanced" onclick="window.open('YOUR_CALENDLY_LINK_HERE')">Book Your Discovery Call</a>
+        </div>
+    </section>
+</body>
+</html>
